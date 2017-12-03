@@ -9,7 +9,7 @@ export default new Vuex.Store({
     todos: []
   },
   mutations: {
-  	addTodo: (state, text) => state.todos.push({ text: text }),
-    removeTodo: (state, index) => state.todos.splice(index, 1)
+  	addTodo: (state, payload) => state.todos.push({ text: payload.text }),
+    removeTodo: (state, payload) => state.todos.splice(payload.index, 1)
   }
 })

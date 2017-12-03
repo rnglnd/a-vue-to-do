@@ -29,14 +29,19 @@ import store from '../store';
       addTodo: function () {
         var text = this.newTodo.trim()
         if (text) {
-          this.todos.push({ text: text })
-          store.commit('addTodo(store.state, text)')
+          store.commit({
+          type: 'addTodo',
+          text
+        })
           this.newTodo = ''
         }
       },
       removeTodo: function (index) {
         this.todos.splice(index, 1)
-        store.commit('removeTodo(store.state, index)')
+        store.commit({
+          type: 'removeTodo',
+          index
+        })
       }
     }
   }
