@@ -12,4 +12,4 @@ export default new Vuex.Store({
   	addTodo: (state, payload) => state.todos.push({ text: payload.text }),
     removeTodo: (state, payload) => state.todos.splice(payload.index, 1)
   }
-})
+});

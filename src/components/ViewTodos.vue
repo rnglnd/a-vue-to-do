@@ -1,12 +1,12 @@
 <template>
   <div id="hello-todo">
+    <router-link to="/">Add New</router-link>
     <h4>All todos listed below:</h4>
     <ul>
       <li v-for="(todo, index) in todos" :key='index'>
         {{ todo.text }}
       </li>
     </ul>
-    <router-link to="/">Add New</router-link>
   </div>
 </template>
 
@@ -19,7 +19,7 @@ import store from '../store';
         return store.state.todos
       }
     }
-  }
+  };
 </script>
 
 <style scoped>

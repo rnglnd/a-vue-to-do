@@ -1,5 +1,6 @@
 <template>
   <div id="hello-todo">
+    <router-link to="view">View All</router-link>
     <h4>Enter a todo list item below:</h4>
     <input v-model="newTodo" v-on:keyup.enter="addTodo">
     <ul>
@@ -7,7 +8,6 @@
         {{ todo.text }} <button v-on:click="removeTodo(index)">X</button>
       </li>
     </ul>
-    <router-link to="view">View All</router-link>
   </div>
 </template>
 
@@ -44,7 +44,7 @@ import store from '../store';
         })
       }
     }
-  }
+  };
 </script>
 
 <style scoped>
