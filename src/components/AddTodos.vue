@@ -7,47 +7,52 @@
         {{ todo.text }} <button v-on:click="removeTodo(index)">X</button>
       </li>
     </ul>
+    <router-link to="view">View All</router-link>
   </div>
 </template>
 
 <script>
-/* eslint-disable */
-export default {
+import store from '../store';
+
+  export default {
     data() {
       return {
-    newTodo: '',
-    todos: [
-    ]
-      }
-  },
-  methods: {
-    addTodo: function () {
-      var text = this.newTodo.trim()
-      if (text) {
-        this.todos.push({ text: text })
-        this.newTodo = ''
+        newTodo: ''
       }
     },
-    removeTodo: function (index) {
-      this.todos.splice(index, 1)
+    computed: {
+      todos () {
+        return store.state.todos
+      }
+    },
+    methods: {
+      addTodo: function () {
+        var text = this.newTodo.trim()
+        if (text) {
+          this.todos.push({ text: text })
+          store.commit('addTodo(store.state, text)')
+          this.newTodo = ''
+        }
+      },
+      removeTodo: function (index) {
+        this.todos.splice(index, 1)
+        store.commit('removeTodo(store.state, index)')
+      }
     }
   }
-}
-/* eslint-enable */
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h4 {
-  margin: 0;
-  padding: 0;}
+  h4 {
+    margin: 0;
+    padding: 0;}
 
-ul {
-  list-style-type: none;
-  padding: 0;
-}
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
 
-li {
-  margin: 0 10px;
-}
+  li {
+    margin: 0 10px;
+  }
 </style>
